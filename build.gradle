@@ -1,0 +1,58 @@
+plugins {
+    id 'war'
+}
+
+def appMainClass = 'com.op.demo.Welcome'
+
+//生成启动脚本打包
+//apply plugin: 'application'
+//mainClassName = appMainClass
+
+//group 'com.inspur'
+version '1.0'
+
+repositories {
+    // maven { url 'http://repo1.maven.org/maven2' }
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar']) //把这一行的compile改为provided
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+jar {
+//    configurations.runtime.each { println it.path }
+//    println "========="
+//    configurations.compile.each { println it.path }
+//    println "========="
+
+    from {
+        //添加依懒到打包文件
+        //configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtime.collect { zipTree(it) }
+    }
+    manifest {
+        attributes 'Main-Class': appMainClass
+    }
+}
+//task clearLibsDir(type: Delete) {
+//    delete 'build/libs'
+//}
+//
+////编写 copy 任务，把生成的 jar 包从生成目录拷贝到指定目录中，这里的路径可以是相对路径。
+//task copyJarTask(type: Copy) {
+//    from 'build/libs'
+//    into 'build/../libs'
+//}
+//
+//task release(type: Copy, dependsOn: [build, clearLibsDir, copyJarTask])
+// gradle release 生成jar包
+
+
