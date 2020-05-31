@@ -9,9 +9,9 @@ but i need a job in Java in SHH.
 
 ------
 
-just learn some basic algorithms, for good job.
+just learn some basic algorithms.
 
-do some exercises of Data Structures and Algorithm Analysis in Java, for MSE.
+do some exercises of Data Structures and Algorithm Analysis in Java.
 
 that's all.
 
