@@ -1,8 +1,9 @@
-package ch08;
+package workbook.ch08;
 
 /**
- * Created by cookfront on 2017/3/26.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class DisjSets {
     private int[] set;
 

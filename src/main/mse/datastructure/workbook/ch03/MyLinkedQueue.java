@@ -1,7 +1,8 @@
-package ch03;
+package workbook.ch03;
 
 /**
- * Created by cookfront on 2017/3/2.
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
  */
 public class MyLinkedQueue {
 }

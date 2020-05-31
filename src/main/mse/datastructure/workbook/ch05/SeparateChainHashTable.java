@@ -1,11 +1,12 @@
-package ch05;
+package workbook.ch05;
 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by cookfront on 2017/3/5.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class SeparateChainHashTable<AnyType> {
     private static final int DEFAULT_TABLE_SIZE = 10;
     private List<AnyType>[] theLists;

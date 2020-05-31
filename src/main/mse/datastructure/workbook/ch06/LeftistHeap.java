@@ -1,8 +1,9 @@
-package ch06;
+package workbook.ch06;
 
 /**
- * Created by cookfront on 2017/3/26.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class LeftistHeap<AnyType extends Comparable<? super AnyType>> {
     private LeftistNode<AnyType> root;
 

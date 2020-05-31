@@ -1,8 +1,9 @@
-package ch03.exercises.e12;
+package workbook.ch03.exercises.e12;
 
 /**
- * Created by cookfront on 2017/5/14.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class SingleSortedLinkedList {
     private static class Node<Comparable> {
         public Comparable data;

@@ -1,4 +1,4 @@
-package ch03.exercises.e02;
+package workbook.ch03.exercises.e02;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

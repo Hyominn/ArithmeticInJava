@@ -1,8 +1,9 @@
-package ch05;
+package workbook.ch05;
 
 /**
- * Created by cookfront on 2017/3/14.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class QuadraticProbingHashTable<AnyType> {
     private static class HashEntry<AnyType> {
         public AnyType element;

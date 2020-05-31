@@ -1,8 +1,9 @@
-package ch04;
+package workbook.ch04;
 
 /**
- * Created by cookfront on 2017/3/4.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     private static class BinaryNode<AnyType> {
         BinaryNode(AnyType theElement) {

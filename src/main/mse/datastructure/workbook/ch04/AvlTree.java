@@ -1,11 +1,12 @@
-package ch04;
+package workbook.ch04;
 
 import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
- * Created by cookfront on 2017/3/5.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class AvlTree<AnyType extends Comparable<? super AnyType>> {
     private static final int ALLOWED_IMBALANCE = 1;
 

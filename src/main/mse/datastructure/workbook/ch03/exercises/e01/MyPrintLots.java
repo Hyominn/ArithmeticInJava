@@ -1,4 +1,4 @@
-package ch03.exercises.e01;
+package workbook.ch03.exercises.e01;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,8 +6,9 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
- * Created by cookfront on 2017/4/23.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public class MyPrintLots<AnyType> {
     public static <AnyType> void printLots(List<AnyType> L, List<Integer> P) {
         Iterator<AnyType> iterL = L.iterator();

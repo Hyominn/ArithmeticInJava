@@ -1,10 +1,11 @@
-package ch07;
+package workbook.ch07;
 
-import ch07.Random;
+import workbook.ch07.Random;
 
 /**
- * Created by cookfront on 2017/3/18.
- */
+ * @Author: NZY
+ * @Date: 2020-05-31 13:03:05
+ * */
 public final class Sort {
     public static <AnyType extends Comparable<? super AnyType>>
     void insertionSort(AnyType[] arr) {
