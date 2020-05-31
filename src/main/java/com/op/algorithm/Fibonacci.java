@@ -1,5 +1,7 @@
 package com.op.algorithm;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * * 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
  * * F(0) = 0,   F(1) = 1
@@ -151,7 +153,7 @@ public class Fibonacci {
 		}
 	}
 
-	void multiply(int[][] A, int[][] B) {
+	void multiply(@NotNull int[][] A, @NotNull int[][] B) {
 		int x = A[0][0] * B[0][0] + A[0][1] * B[1][0];
 		int y = A[0][0] * B[0][1] + A[0][1] * B[1][1];
 		int z = A[1][0] * B[0][0] + A[1][1] * B[1][0];
@@ -164,7 +166,7 @@ public class Fibonacci {
 	}
 
 	/*
-	 *使用黄金分割比：φ = (1+5^(1/2))/2 ≈1.6180339887....
+	 * 使用黄金分割比：φ = (1+5^(1/2))/2 ≈1.6180339887....
 	 * 我们可以只能用常数时间和常数空间得到斐波那契数。
 	 */
 	public int fibByFormula(int N) {
