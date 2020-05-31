@@ -1,4 +1,4 @@
-package ch05;
+package datastructure.ch05;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ch03;
+package datastructure.ch03;
 
 /**
  * Created by cookfront on 2017/3/2.

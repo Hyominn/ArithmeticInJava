@@ -1,4 +1,4 @@
-package ch03.exercises.e12;
+package datastructure.ch03.exercises.e12;
 
 /**
  * Created by cookfront on 2017/5/14.

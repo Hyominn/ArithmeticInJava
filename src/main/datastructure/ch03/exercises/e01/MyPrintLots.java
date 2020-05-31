@@ -1,4 +1,4 @@
-package ch03.exercises.e01;
+package datastructure.ch03.exercises.e01;
 
 import java.util.Iterator;
 import java.util.List;

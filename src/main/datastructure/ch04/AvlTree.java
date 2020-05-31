@@ -1,4 +1,4 @@
-package ch04;
+package datastructure.ch04;
 
 import java.util.TreeMap;
 import java.util.TreeSet;

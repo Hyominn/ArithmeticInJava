@@ -10,9 +10,9 @@
 // int randomInt( int low, int high )   --> Uniform low..high
 // long randomLong( long low, long high ) --> Uniform low..high
 // void permute( Object [ ] a )         --> Randomly permutate
-package ch07;
+package datastructure.ch07;
 
-import ch07.Sort;
+import datastructure.ch07.Sort;
 /**
  * Random number class, using a 31-bit
  * linear congruential generator.

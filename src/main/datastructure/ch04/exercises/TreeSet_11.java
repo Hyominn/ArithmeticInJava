@@ -1,4 +1,4 @@
-package ch04.exercises;
+package datastructure.ch04.exercises;
 
 /**
  * Created by cookfront on 2017/3/5.

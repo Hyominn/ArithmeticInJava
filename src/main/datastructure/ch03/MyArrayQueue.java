@@ -1,4 +1,4 @@
-package ch03;
+package datastructure.ch03;
 
 import java.lang.Iterable;
 import java.util.Iterator;

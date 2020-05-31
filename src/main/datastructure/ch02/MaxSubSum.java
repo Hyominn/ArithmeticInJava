@@ -1,4 +1,4 @@
-package ch02;
+package datastructure.ch02;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

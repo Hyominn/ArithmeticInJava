@@ -1,4 +1,4 @@
-package ch05;
+package datastructure.ch05;
 
 /**
  * Created by cookfront on 2017/3/14.

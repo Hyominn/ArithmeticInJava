@@ -1,4 +1,4 @@
-package ch06;
+package datastructure.ch06;
 
 /**
  * Created by cookfront on 2017/3/26.

@@ -1,4 +1,4 @@
-package ch08;
+package datastructure.ch08;
 
 /**
  * Created by cookfront on 2017/3/26.

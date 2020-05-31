@@ -1,6 +1,6 @@
-package ch07;
+package datastructure.ch07;
 
-import ch07.Random;
+import datastructure.ch07.Random;
 
 /**
  * Created by cookfront on 2017/3/18.
