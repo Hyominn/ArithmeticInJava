@@ -1,4 +1,4 @@
-package com.op.arithmetic;
+package com.op.algorithm;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.op.arithmetic;
+package com.op.algorithm;
 
 public class SelectionProblem {
     public static void main(String[] args) {
