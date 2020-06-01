@@ -7,12 +7,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @Author: NZY
  * @Date: 2020/5/25 20:01
  */
-public class Thread {
+public class MyThread {
     // 线程安全
     ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
     Lock readLock = lock.readLock();
     Lock writeLock = lock.writeLock();
     private int x = 0;
+
+
 
     private void count() {
         writeLock.lock();
