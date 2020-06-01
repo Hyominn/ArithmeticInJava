@@ -4,6 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * 线程安全
+ *
  * @Author: NZY
  * @Date: 2020/5/25 20:01
  */
