@@ -1,5 +1,7 @@
 package com.op.algorithm;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class ComputerCount {
     }
 
     // 计算字符串中某个字符出现的次数
-    public static void compress(String str) {
+    public static void compress(@NotNull String str) {
         Map<String, Integer> count = new HashMap<String, Integer>();
         String[] myStrs = str.split("");
         for (String myStr : myStrs) {
