@@ -58,7 +58,7 @@ public class Fibonacci {
 	 * 如果 N <= 1，则返回 N。
 	 * 调用和返回 memoize(N)。
 	 * 如果 N 对应的斐波那契数存在，则返回。
-	 * 否则将计算 N 对应的斐波那契数为 memoize(N-1) + memoize(N-2)。
+	 * 否则将计算 N 对应的斐波那契数列为 memoize(N-1) + memoize(N-2)。
 	 */
 	private Integer[] cache = new Integer[31];
 
