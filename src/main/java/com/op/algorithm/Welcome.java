@@ -17,7 +17,7 @@ public class Welcome {
         //Scanner in = new Scanner(System.in);
         //String name = in.nextLine();
         String name = "Kris Nie";
-        String greeting = "com.op.demo.Welcome to core Java";
+        String greeting = "com.op.algorithm.Welcome to core Java";
         System.out.println(name); // is this too easy?
         System.out.println(greeting); // is this too easy?
         double salary;

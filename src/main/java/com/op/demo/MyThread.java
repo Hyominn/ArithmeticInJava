@@ -14,8 +14,6 @@ public class MyThread {
     Lock writeLock = lock.writeLock();
     private int x = 0;
 
-
-
     private void count() {
         writeLock.lock();
         try {
