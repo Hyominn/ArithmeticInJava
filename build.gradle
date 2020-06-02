@@ -1,30 +1,90 @@
-plugins {
-    id 'war'
+// Gradle 构建本身需要的配置（例如插件仓库）
+buildscript {
+    // 配置变量
+    ext {
+        springBootVersion = '2.1.4.RELEASE'
+    }
+    // 插件仓库
+    repositories {
+        gradlePluginPortal()
+    }
+    // 应用插件需要的依赖包
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}" as Object)
+    }
 }
 
 def appMainClass = 'com.op.demo.Welcome'
+// idea 插件，用来生成 idea 工程目录
+apply plugin: 'idea'
+// java 插件,提供 build、jar 等task
+apply plugin: 'java'
+// spring boot 插件提供 bootrun 等task，非必须
+apply plugin: 'org.springframework.boot'
+// dependency-management 插件，为spring 版本火车项目提供一致的版本号
+apply plugin: 'io.spring.dependency-management'
 
-//生成启动脚本打包
-//apply plugin: 'application'
-//mainClassName = appMainClass
+// 指定构建输出目录
+buildDir = './out'
 
-//group 'com.inspur'
-version '1.0'
+// 指定包信息
+group 'com.op'
+version = '1.0.0'
 
+// java 版本
+//sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+
+// 编译字符集
+tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+
+// 包依赖仓库
 repositories {
-    // maven { url 'http://repo1.maven.org/maven2' }
+    mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    mavenCentral()
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar']) //把这一行的compile改为provided
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    // lombok
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
     compileOnly 'org.projectlombok:lombok:1.18.12'
-}
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+    // 监控
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+
+    compileOnly "org.projectlombok:lombok"
+    testCompileOnly "org.projectlombok:lombok"
+
+    // web
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    // Session
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile 'org.springframework.session:spring-session-data-redis'
+
+    // database
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    // 数据库迁移
+    compile 'org.flywaydb:flyway-core'
+
+    // 对象转换
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.1'
+
+    // 加密库
+    compile 'commons-codec:commons-codec:1.13'
+
+    // 测试
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    // 开发热启动工具
+    runtime('org.springframework.boot:spring-boot-devtools')
 }
 
 jar {
@@ -42,17 +102,5 @@ jar {
         attributes 'Main-Class': appMainClass
     }
 }
-//task clearLibsDir(type: Delete) {
-//    delete 'build/libs'
-//}
-//
-////编写 copy 任务，把生成的 jar 包从生成目录拷贝到指定目录中，这里的路径可以是相对路径。
-//task copyJarTask(type: Copy) {
-//    from 'build/libs'
-//    into 'build/../libs'
-//}
-//
-//task release(type: Copy, dependsOn: [build, clearLibsDir, copyJarTask])
-// gradle release 生成jar包
 
 
