@@ -1,10 +1,14 @@
 package com.op.algorithm;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * twoSum
+ * 633. Sum of Square Numbers (Easy)
+ * https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/
  *
  * @Author: NZY
  * @Date: 2020/6/2 19:22
@@ -45,17 +49,14 @@ public class TwoSum {
      * 输出: [1,2]
      * 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
      */
-    public int[] twoSumII(int[] numbers, int target) {
-        // 使用两个指针，初始分别位于第一个元素和最后一个元素位置，比较这两个元素之和与目标值的大小。
-        // 如果和等于目标值，我们发现了这个唯一解。如果比目标值小，将较小元素指针增加一。如果比目标值大，我们将较大指针减小一。
-        // 移动指针后重复上述比较知道找到答案。
-        // 假设 [... , a, b, c, ... , d, e, f, …][...,a,b,c,...,d,e,f,…] 是已经升序排列的输入数组，
-        // 并且元素 b, eb,e 是唯一解。
-        // 从左到右移动较小指针，从右到左移动较大指针，总有某个时刻存在一个指针移动到 bb 或 ee 的位置。
-        // 假设小指针县移动到了元素 bb ，这是两个元素的和一定比目标值大，向左移动较大指针直至获得结果。
-        // 时间复杂度：O(n) 每个元素最多被访问一次，共有 nn 个元素。
+    public int[] twoSumII(@NotNull int[] numbers, int target) {
+        // 使用双指针，一个指针指向值较小的元素，一个指针指向值较大的元素。
+        // 指向较小元素的指针从头向尾遍历，指向较大元素的指针从尾向头遍历。
+        // 如果两个指针指向元素的和 sum == target，那么得到要求的结果；
+        // 如果 sum > target，移动较大的元素，使 sum 变小一些；
+        // 如果 sum < target，移动较小的元素，使 sum 变大一些。
+        // 时间复杂度：O(n) 每个元素最多被访问一次，共有 n 个元素。
         // 空间复杂度：O(1) 只是用了两个指针。
-
         int low = 0;
         int high = numbers.length - 1;
         while (numbers[low] + numbers[high] != target) {
