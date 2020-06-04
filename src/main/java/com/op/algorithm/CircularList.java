@@ -5,6 +5,12 @@ import java.util.Set;
 
 /**
  * 环形链表
+ * 141. Linked List Cycle (Easy)
+ * https://leetcode-cn.com/problems/linked-list-cycle/description/
+ * <p>
+ * 142. Linked List Cycle II
+ * https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ *
  * @Author: NZY
  * @Date: 2020/5/26 10:49
  */
@@ -79,9 +85,9 @@ public class CircularList {
     }
 
     /*
-    * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
-    * 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。
-    * 如果 pos 是 -1，则在该链表中没有环。
+     * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+     * 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。
+     * 如果 pos 是 -1，则在该链表中没有环。
      */
     public ListNode detectCycleByHash(ListNode head) {
         // 同方法 hasCycleByHash
@@ -116,7 +122,7 @@ public class CircularList {
         return null;
     }
 
-    public ListNode detectCycleByFloyd (ListNode head) {
+    public ListNode detectCycleByFloyd(ListNode head) {
         //时间复杂度：O(n)
         //空间复杂度：O(1)
         if (head == null) {
