@@ -51,14 +51,14 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
     // lombok
-//    annotationProcessor 'org.projectlombok:lombok:1.18.12'
-//    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
 
     // 监控
     compile 'org.springframework.boot:spring-boot-starter-actuator'
 
-    compileOnly "org.projectlombok:lombok"
-    testCompileOnly "org.projectlombok:lombok"
+//    compileOnly "org.projectlombok:lombok"
+//    testCompileOnly "org.projectlombok:lombok"
 
     // web
     compile 'org.springframework.boot:spring-boot-starter-web'
