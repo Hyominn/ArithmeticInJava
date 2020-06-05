@@ -1,5 +1,6 @@
 package com.op.algorithm;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,9 +11,12 @@ import java.util.List;
  * @Author: NZY
  * @Date: 2020/6/4 19:45
  */
-public class LongestWordInDictionary {
+public class LongestWord {
     public static void main(String[] args) {
-
+        LongestWord l = new LongestWord();
+        String s = "abpcplea";
+        List<String> d = Arrays.asList("ale", "apple", "monkey", "plea");
+        System.out.println(l.findLongestWord(s, d));
     }
 
     /**
@@ -48,5 +52,4 @@ public class LongestWordInDictionary {
         }
         return j == target.length();
     }
-
 }
