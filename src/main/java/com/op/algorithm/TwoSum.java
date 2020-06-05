@@ -1,7 +1,6 @@
 package com.op.algorithm;
 
-import org.jetbrains.annotations.NotNull;
-
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
