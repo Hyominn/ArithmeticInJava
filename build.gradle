@@ -6,6 +6,7 @@ buildscript {
     }
     // 插件仓库
     repositories {
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/'}
         gradlePluginPortal()
     }
     // 应用插件需要的依赖包
