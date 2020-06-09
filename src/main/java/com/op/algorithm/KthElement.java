@@ -1,5 +1,7 @@
 package com.op.algorithm;
 
+
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -61,7 +63,7 @@ public class KthElement {
     /**
      * 相对应的 可以用大顶堆来求数组中第k个最小元素
      */
-    public int findKthSmallestByPriorityQueue(int[] nums, int k) {
+    public int findKthSmallestByPriorityQueue(@NotNull int[] nums, @NotNull int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(k, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
