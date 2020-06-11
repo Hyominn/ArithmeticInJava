@@ -3,7 +3,6 @@
 
 ：）
 
-------
 
 just learn some basic algorithms.
 
