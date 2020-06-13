@@ -45,7 +45,8 @@ public class SqrtX {
             } else if (s > m) {
                 l = m + 1;
             } else {
-                return m; // s == m
+                // s == m
+                return m;
             }
         }
         return h;

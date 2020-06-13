@@ -10,5 +10,29 @@ do some exercises of Data Structures and Algorithm Analysis in Java.
 
 that's all.
 
-2020-05-31 21:11:16
+idea Plugins:
 
+*.ignore*
+
+*Alibaba Java Coding Guidelines*
+
+*GsonFormat*
+
+*StackOverflow*
+
+*Lombok*
+
+*CodeGlance*
+
+*GitToolBox*
+
+*Grep Console*
+
+*Live Edit*
+
+*Material Theme UI*
+
+*Translation*
+
+
+2020-05-31 21:11:16
