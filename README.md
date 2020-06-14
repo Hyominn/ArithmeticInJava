@@ -35,5 +35,9 @@ idea Plugins:
 > *Material Theme UI*
 >
 > *Translation*
+>
+> *jclasslib*
+
+
 
 2020-05-31 21:11:16
