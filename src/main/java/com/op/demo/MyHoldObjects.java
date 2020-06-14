@@ -39,7 +39,8 @@ public class MyHoldObjects {
 
 		System.out.println();
 		Integer[] m = {4, 5, 6};
-		c.addAll(Arrays.asList(m)); // 初始 Collection 为某对象
+		// 初始 Collection 为某对象
+		c.addAll(Arrays.asList(m));
 
 		for (Integer i : c) {
 			System.out.println(i);
@@ -126,6 +127,5 @@ public class MyHoldObjects {
 		}
 		print(m);
 	}
-
 
 }
