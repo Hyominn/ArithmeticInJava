@@ -188,6 +188,6 @@ public class MyBoxing {
 		String s = new String("abc");
 		// "abc" 属于字符串字面量，因此编译时期会在 String Pool 中创建一个字符串对象，指向这个 "abc" 字符串字面量；
 		// 而使用 new 的方式会在堆中创建一个字符串对象。
-
+		// 从 new String 的源码可以看到，在将一个字符串对象作为另一个字符串对象的构造函数参数时，并不会完全复制 value 数组内容，而是都会指向同一个 value 数组。
 	}
 }
