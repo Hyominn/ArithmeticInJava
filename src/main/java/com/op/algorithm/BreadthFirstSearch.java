@@ -1,9 +1,9 @@
 package com.op.algorithm;
 
 
-import java.util.AbstractMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import org.springframework.data.util.Pair;
+
+import java.util.*;
 
 /**
  * 广度优先搜索
@@ -139,5 +139,123 @@ public class BreadthFirstSearch {
 		return -1;
 	}
 
+
+	/**
+	 * 给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
+	 * <p>
+	 * For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.
+	 */
+	public int numSquares(int n) {
+		// 时间复杂度：O(√n)，在主循环中，我们检查数字是否可以分解为两个平方和，这需要 个迭代。在其他情况下，我们会在常数时间内进行检查。
+		// 空间复杂度：O(1)，该算法消耗一个常量空间。
+		ArrayList<Integer> squareNums = new ArrayList<Integer>();
+		for (int i = 1; i * i <= n; ++i) {
+			squareNums.add(i * i);
+		}
+
+		Set<Integer> queue = new HashSet<Integer>();
+		queue.add(n);
+
+		int level = 0;
+		while (queue.size() > 0) {
+			level += 1;
+			Set<Integer> nextQueue = new HashSet<Integer>();
+			for (Integer remainder : queue) {
+				for (Integer square : squareNums) {
+					if (remainder.equals(square)) {
+						return level;
+					} else if (remainder < square) {
+						break;
+					} else {
+						nextQueue.add(remainder - square);
+					}
+				}
+			}
+			queue = nextQueue;
+		}
+		return level;
+	}
+
+
+	/**
+	 * 给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
+	 * 每次转换只能改变一个字母。
+	 * 转换过程中的中间单词必须是字典中的单词。
+	 * <p>
+	 * 利用广度优先搜索搜索从 beginWord 到 endWord 的路径。
+	 * 对给定的 wordList 做预处理，找出所有的通用状态。将通用状态记录在字典中，键是通用状态，值是所有具有通用状态的单词。
+	 * 将包含 beginWord 和 1 的元组放入队列中，1 代表节点的层次。我们需要返回 endWord 的层次也就是从 beginWord 出发的最短距离。
+	 * 为了防止出现环，使用访问数组记录。
+	 * 当队列中有元素的时候，取出第一个元素，记为 current_word。
+	 * 找到 current_word 的所有通用状态，并检查这些通用状态是否存在其它单词的映射，这一步通过检查 all_combo_dict 来实现。
+	 * 从 all_combo_dict 获得的所有单词，都和 current_word 共有一个通用状态，所以都和 current_word 相连，因此将他们加入到队列中。
+	 * 对于新获得的所有单词，向队列中加入元素 (word, level + 1) 其中 level 是 current_word 的层次。
+	 * 最终当你到达期望的单词，对应的层次就是最短变换序列的长度。
+	 * <p>
+	 * Input:
+	 * beginWord = "hit",
+	 * endWord = "cog",
+	 * wordList = ["hot","dot","dog","lot","log","cog"]
+	 * <p>
+	 * Output: 5
+	 * <p>
+	 * Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+	 * return its length 5.
+	 */
+	public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+		// 时间复杂度：O(M×N)，其中 M 是单词的长度 N 是单词表中单词的总数。找到所有的变换需要对每个单词做 M 次操作。同时，最坏情况下广度优先搜索也要访问所有的 N 个单词。
+		// 空间复杂度：O(M×N)，要在 all_combo_dict 字典中记录每个单词的 M 个通用状态。访问数组的大小是 N。广搜队列最坏情况下需要存储 N 个单词。
+		// Since all words are of same length.
+		int l = beginWord.length();
+		// Dictionary to hold combination of words that can be formed,
+		// from any given word. By changing one letter at a time.
+		Map<String, List<String>> allComboDict = new HashMap<>(16);
+		wordList.forEach(
+				word -> {
+					for (int i = 0; i < l; i++) {
+						// Key is the generic word
+						// Value is a list of words which have the same intermediate generic word.
+						String newWord = word.substring(0, i) + '*' + word.substring(i + 1, l);
+						List<String> transformations = allComboDict.getOrDefault(newWord, new ArrayList<>());
+						transformations.add(word);
+						allComboDict.put(newWord, transformations);
+					}
+				});
+
+		// Queue for BFS
+		Queue<AbstractMap.SimpleEntry<String, Integer>> q = new LinkedList<>();
+		q.add(new AbstractMap.SimpleEntry<>(beginWord, 1));
+
+		// Visited to make sure we don't repeat processing same word.
+		Map<String, Boolean> visited = new HashMap<>(16);
+		visited.put(beginWord, true);
+
+		while (!q.isEmpty()) {
+			AbstractMap.SimpleEntry<String, Integer> node = q.remove();
+			String word = node.getKey();
+			int level = node.getValue();
+			for (int i = 0; i < l; i++) {
+
+				// Intermediate words for current word
+				String newWord = word.substring(0, i) + '*' + word.substring(i + 1, l);
+
+				// Next states are all the words which share the same intermediate state.
+				for (String adjacentWord : allComboDict.getOrDefault(newWord, new ArrayList<>())) {
+					// If at any point if we find what we are looking for
+					// i.e. the end word - we can return with the answer.
+					if (adjacentWord.equals(endWord)) {
+						return level + 1;
+					}
+					// Otherwise, add it to the BFS Queue. Also mark it visited
+					if (!visited.containsKey(adjacentWord)) {
+						visited.put(adjacentWord, true);
+						q.add(new AbstractMap.SimpleEntry<>(adjacentWord, level + 1));
+					}
+				}
+			}
+		}
+
+		return 0;
+	}
 
 }
