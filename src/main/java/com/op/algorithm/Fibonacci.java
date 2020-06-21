@@ -2,6 +2,9 @@ package com.op.algorithm;
 
 import javax.validation.constraints.NotNull;
 
+
+import static com.op.util.Print.print;
+
 /**
  * * 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
  * * F(0) = 0,   F(1) = 1
@@ -13,6 +16,10 @@ import javax.validation.constraints.NotNull;
  */
 public class Fibonacci {
 	public static void main(String[] args) {
+		Fibonacci fibonacci = new Fibonacci();
+		print(fibonacci.fib(45));
+		print();
+		print(fibonacci.fibByMemoizeUp(45));
 
 
 	}
@@ -29,7 +36,8 @@ public class Fibonacci {
 		return fib(N - 1) + fib(N - 2);
 	}
 
-	/* 记忆化自底向上的方法
+	/**
+	 * 记忆化自底向上的方法
 	 * 如果 N 小于等于 1，则返回 N。
 	 * 迭代 N，将计算出的答案存储在数组中。
 	 * 使用数组前面的两个斐波那契数计算当前的斐波那契数。
@@ -46,6 +54,7 @@ public class Fibonacci {
 
 	public int memoizeUp(int N) {
 		int[] cache = new int[N + 1];
+		// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		cache[1] = 1;
 
 		for (int i = 2; i <= N; i++) {
