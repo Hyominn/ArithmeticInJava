@@ -3,7 +3,7 @@ package com.op.util;
 import java.util.LinkedList;
 
 /**
- * Stack
+ * Stack by LinkedList
  *
  * @Author: NZY
  * @Date: 2020/6/7 4:10 下午
@@ -27,6 +27,7 @@ public class Stack<T> {
 		return this.storage.isEmpty();
 	}
 
+	@Override
 	public String toString() {
 		return this.storage.toString();
 	}
