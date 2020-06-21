@@ -1,6 +1,9 @@
 package com.op.demo;
 
 
+import com.op.util.Stack2;
+import org.hibernate.boot.jaxb.hbm.spi.Adapter1;
+
 import java.net.Inet4Address;
 import java.util.*;
 
@@ -51,10 +54,12 @@ public class MyHoldObjects {
 		// List 初始如果初始对象直接使用 Arrays.asList() 不可以进行 resize
 		List<Integer> list = new ArrayList<>(Arrays.asList(7, 8, 10, 10));
 		Iterator<Integer> it = list.iterator();
-		ListIterator<Integer> lit = list.listIterator(); // 获取List专属的迭代器
+		// 获取List专属的迭代器
+		ListIterator<Integer> lit = list.listIterator();
 
 		list.set(2, 9);
-		list = list.subList(0, 4); // 截取一段
+		// 截取一段
+		list = list.subList(0, 4);
 		System.out.println(list.toString());
 
 		// 使用 listIterator 实现正序 倒序遍历
@@ -82,15 +87,32 @@ public class MyHoldObjects {
 		print(ll.element() + ll.getFirst());
 	}
 
+	void myArrayListDemo() {
+		// ArrayList
+	}
+
 	void myStackDemo() {
 		// 不建议使用 ava.util.stack ， 推荐使用 deque——double ended queue（双端队列）实现 LIFO
-		Stack<String> s = new Stack<>();// 栈
-		for (String s1 : "hello it's me".split(" ")) {
+		// 栈
+		Stack<String> s = new Stack<>();
+		String hello = "hello it's me";
+		String blank = " ";
+		for (String s1 : hello.split(blank)) {
 			s.push(s1);
 		}
 		while (!s.empty()) {
 			print(s.pop());
 		}
+
+		ArrayList<Integer> al = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+		// 使用 ArrayList 实现栈
+		Stack2<Integer> s2 = new Stack2<>();
+		for (Integer i : al) {
+			s2.push(i);
+		}
+		// 相当于 peek()
+		print(s2.peek());
+		print(s2.toString());
 	}
 
 	void mySetDemo() {
