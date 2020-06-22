@@ -14,6 +14,8 @@ public class MyOperator {
         myOperator.myBalance();
         print();
         myOperator.myPrecision();
+        print();
+        myOperator.myPlusPlus();
     }
     
     void myDivide() {
@@ -101,7 +103,15 @@ public class MyOperator {
          如果值过于复杂，那么还是用 if 比较合适。
          Incompatible types. Found: 'long', required: 'char, byte, short, int, Character, Byte, Short, Integer, String, or an enum'
         */
+        
+    }
     
+    void myPlusPlus(){
+        int i = 0;
+        // 3 因为第一个 i 返回 1 ，第二个 i 在 1 的基础上加 1 返回 2 ，此式子相当于 1 + 2 = 3
+        print((++i) + (++i));
+        // 同理 6
+        print((i++) + (++i));
     }
     
 }
