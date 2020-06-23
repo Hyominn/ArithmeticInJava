@@ -4,6 +4,8 @@ package com.op.algorithm;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
+import static com.op.util.Print.print;
+
 /**
  * 广度优先搜索
  * <p>
@@ -42,7 +44,12 @@ import java.util.*;
  */
 public class BreadthFirstSearch {
     public static void main(String[] args) {
-    
+        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
+        // int[][] grids = {{1, 1, 0, 1}, {1, 0, 1, 0}, {1, 1, 1, 1}, {1, 0, 1, 1}};
+        // int[][] grids = {{0, 1}, {1, 0}};
+        int[][] grids = {{0, 0, 0}, {1, 1, 0}, {1, 1, 0}};
+        print(breadthFirstSearch.shortestPathBinaryMatrix(grids));
+        
     }
     
     /**
@@ -71,7 +78,7 @@ public class BreadthFirstSearch {
         int len = q.size();
         int c = 0;
         // 定义八个方向
-        int[][] dir = {{1, 0}, {1, 1}, {1, -1}, {0, 1}, {0, -1}, {-1, 0}, {-1, -1}, {-1, 1}};
+        int[][] dirs = {{1, 0}, {1, 1}, {1, -1}, {0, 1}, {0, -1}, {-1, 0}, {-1, -1}, {-1, 1}};
         // 定义最短路径长度
         int path = 1;
         while (!q.isEmpty()) {
@@ -83,11 +90,12 @@ public class BreadthFirstSearch {
             if (x == m - 1 && y == n - 1) {
                 return path;
             }
+            
             // 此处填充队列，将可走的步添加进队列
-            for (int[] d : dir) {
+            for (int[] dir : dirs) {
                 // x1，y1代表当前坐标移动后的坐标（x1，y1）
-                int x1 = x + d[0];
-                int y1 = y + d[1];
+                int x1 = x + dir[0];
+                int y1 = y + dir[1];
                 /*
                 x1 >= 0 && y1 >= 0  保证是正方向向右下角移动
                 x1 < m && y1 < n    保证数组移动未越界 未超出 grids
@@ -99,6 +107,8 @@ public class BreadthFirstSearch {
                     grids[x1][y1] = 1;
                 }
             }
+            
+            // 判断是否存在走单元格
             c++;
             if (c == len) {
                 c = 0;
@@ -109,12 +119,16 @@ public class BreadthFirstSearch {
         return -1;
     }
     
+    
+    /**
+     * AbstractMap.SimpleEntry<>()
+     */
     public int shortestPathBinaryMatrixUseSimpleEntry(int[][] grids) {
-        if (grids == null || grids.length == 0 || grids[0].length == 0) {
+        int m = grids.length, n = grids[0].length;
+        if (grids[0].length == 0 || grids[0][0] == 1 || grids[m - 1][n - 1] == 1) {
             return -1;
         }
         int[][] direction = {{1, -1}, {1, 0}, {1, 1}, {0, -1}, {0, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
-        int m = grids.length, n = grids[0].length;
         Queue<AbstractMap.SimpleEntry<Integer, Integer>> queue = new LinkedList<>();
         queue.add(new AbstractMap.SimpleEntry<>(0, 0));
         int pathLength = 0;
