@@ -78,7 +78,7 @@ public class MyObject {
         
     }
     
-    class EqualExample {
+    static class EqualExample {
         private int x;
         private int y;
         private int z;
