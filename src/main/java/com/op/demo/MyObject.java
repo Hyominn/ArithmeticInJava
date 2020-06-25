@@ -1,5 +1,7 @@
 package com.op.demo;
 
+import java.util.HashSet;
+
 import static com.op.util.Print.print;
 
 /**
@@ -31,6 +33,8 @@ import static com.op.util.Print.print;
 public class MyObject {
     public static void main(String[] args) {
         MyObject myObject = new MyObject();
+        myObject.myHashCode();
+        print();
     }
     
     void myEquals() {
@@ -108,5 +112,62 @@ public class MyObject {
             }
             return z == that.z;
         }
+        
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 31 * result + x;
+            result = 31 * result + y;
+            result = 31 * result + z;
+            return result;
+        }
     }
+    
+    void myHashCode() {
+        /*
+        hashCode() 返回哈希值，而 equals() 是用来判断两个对象是否等价。
+        等价的两个对象散列值一定相同，但是散列值相同的两个对象不一定等价.
+        这是因为计算哈希值具有随机性，两个值不同的对象可能计算出相同的哈希值。
+        在覆盖 equals() 方法时应当总是覆盖 hashCode() 方法，保证等价的两个对象哈希值也相等。
+        HashSet 和 HashMap 等集合类使用了 hashCode() 方法来计算对象应该存储的位置，
+        因此要将对象添加到这些集合类中，需要让对应的类实现 hashCode() 方法。
+        下面的代码中，新建了两个等价的对象，并将它们添加到 HashSet 中。
+        我们希望将这两个对象当成一样的，只在集合中添加一个对象。
+        但是 EqualExample 没有实现 hashCode() 方法，因此这两个对象的哈希值是不同的，最终导致集合添加了两个等价的对象。
+         */
+        EqualExample e1 = new EqualExample(1, 1, 1);
+        EqualExample e2 = new EqualExample(1, 1, 1);
+        System.out.println(e1.equals(e2));
+        // true
+        HashSet<EqualExample> set = new HashSet<>();
+        set.add(e1);
+        set.add(e2);
+        // 未重写 hashCode() 方法之前返回 2 重写之后返回 1
+        print(set.size());
+        
+        /*
+        理想的哈希函数应当具有均匀性，即不相等的对象应当均匀分布到所有可能的哈希值上。
+        这就要求了哈希函数要把所有域的值都考虑进来。可以将每个域都当成 R 进制的某一位，然后组成一个 R 进制的整数。
+        R 一般取 31，因为它是一个奇素数，如果是偶数的话，当出现乘法溢出，信息就会丢失，
+        因为与 2 相乘相当于向左移一位，最左边的位丢失。
+        并且一个数与 31 相乘可以转换成移位和减法：31*x == (x<<5)-x，编译器会自动进行这个优化。
+         */
+    }
+    
+    void myToString() {
+        // 默认返回 ToStringExample@4554617c 这种形式，其中 @ 后面的数值为散列码的无符号十六进制表示。
+        ToStringExample example = new ToStringExample(123);
+        System.out.println(example.toString());
+        // ToStringExample@4554617c
+    }
+    
+    static class ToStringExample {
+        
+        private int number;
+        
+        public ToStringExample(int number) {
+            this.number = number;
+        }
+    }
+    
 }
