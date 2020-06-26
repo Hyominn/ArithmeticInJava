@@ -1,6 +1,6 @@
 package com.op.algorithm;
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * 求开方
@@ -15,7 +15,7 @@ import static com.op.util.Print.print;
 public class SqrtX {
     public static void main(String[] args) {
         SqrtX sqrtX = new SqrtX();
-        print(sqrtX.mySqrt(8));
+        println(sqrtX.mySqrt(8));
     }
 
 

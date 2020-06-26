@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * 根据身高和序号重组队列
@@ -20,10 +20,10 @@ public class QueueReconstruction {
     public static void main(String[] args) {
         QueueReconstruction queueReconstruction = new QueueReconstruction();
         int[][] people = {{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
-        print(Arrays.deepToString(people)); // java 打印二维数组 Arrays.deepToString()
-        print(Arrays.deepToString(queueReconstruction.reconstructQueue(people)));
+        println(Arrays.deepToString(people)); // java 打印二维数组 Arrays.deepToString()
+        println(Arrays.deepToString(queueReconstruction.reconstructQueue(people)));
     }
-
+    
     /**
      * 一个学生用两个分量 (h, k) 描述，h 表示身高，k 表示排在前面的有 k 个学生的身高比他高或者和他一样高。
      * 为了使插入操作不影响后续的操作，身高较高的学生应该先做插入操作，否则身高较小的学生原先正确插入的第 k 个位置可能会变成第 k+1 个位置。
