@@ -1,8 +1,11 @@
 package com.op.demo;
 
+import com.op.util.Print;
+
 import java.util.Arrays;
 import java.util.List;
 
+import static com.op.util.Print.print;
 import static com.op.util.Print.println;
 
 /**
@@ -58,34 +61,108 @@ public class MyLambda {
         MathOperation division = (int a, int b) -> a / b;
         
         int a = 10, b = 5;
-        System.out.println("10 + 5 = " + this.operate(a, b, addition));
-        System.out.println("10 - 5 = " + this.operate(a, b, subtraction));
-        System.out.println("10 x 5 = " + this.operate(a, b, multiplication));
-        System.out.println("10 / 5 = " + this.operate(a, b, division));
+        println("10 + 5 = " + this.operate(a, b, addition));
+        println("10 - 5 = " + this.operate(a, b, subtraction));
+        println("10 x 5 = " + this.operate(a, b, multiplication));
+        println("10 / 5 = " + this.operate(a, b, division));
         
         // 不用括号
-        GreetingService greetService1 = message -> System.out.println("Hello " + message);
+        GreetingService greetService1 = message -> println("Hello " + message);
         // 用括号
-        GreetingService greetService2 = (message) -> System.out.println("Hello " + message);
+        GreetingService greetService2 = (message) -> println("Hello " + message);
         
         greetService1.sayMessage("nzy");
         greetService2.sayMessage("Google");
         println();
-        // lambda 表达式例子：
         
+        /// 线程初始化 Todo:使用线程池
+        /*
+        // Old way
+        new Thread(new Runnable() {
+                    @Override
+            public void run() {
+                System.out.println("Hello world");
+            }
+        }).start();
+
+
+        // New way
+        new Thread(
+                () -> System.out.println("Hello world")
+        ).start();
+         */
         
-        // 逻辑操作 输出通过逻辑判断的数据。
+        /*
+         遍例输出（方法引用） 输出给定数组的所有元素的简单代码。
+         请注意，还有一种使用 Lambda 表达式的方式。
+         */
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
-        System.out.print("输出所有数字：");
+        for (Integer n : list) {
+            println(n);
+        }
+        // 使用 -> 的 Lambda 表达式
+        list.forEach(n -> println(n));
+        // 使用 :: 的 Lambda 表达式
+        list.forEach(Print::println);
+        println();
+        
+        /*
+        逻辑操作 输出通过逻辑判断的数据
+        使用 Predicate
+         */
+        print("输出所有数字：");
         println(list, (n) -> true);
-        System.out.print("不输出：");
+        print("不输出：");
         println(list, (n) -> false);
-        System.out.print("输出偶数：");
+        print("输出偶数：");
         println(list, (n) -> n % 2 == 0);
-        System.out.print("输出奇数：");
+        print("输出奇数：");
         println(list, (n) -> n % 2 == 1);
-        System.out.print("输出大于 5 的数字：");
+        print("输出大于 5 的数字：");
         println(list, (n) -> n > 5);
+        println();
+        
+        /*
+        Stream API 示例
+        java.util.stream.Stream接口 和 Lambda 表达式一样，都是 Java 8 新引入的。
+        所有 Stream 的操作必须以 Lambda 表达式为参数。
+        Stream 接口中带有大量有用的方法，比如 map() 的作用就是将 input Stream 的每个元素，
+        映射成 output Stream 的另外一个元素。
+
+        下面的例子，我们将 Lambda 表达式 x -> x*x 传递给 map() 方法，将其应用于流的所有元素。
+        之后，我们使用 forEach 打印列表的所有元素。
+         */
+        for (Integer n : list) {
+            int x = n * n;
+            System.out.println(x);
+        }
+        // new way
+        list.stream().map((x) -> x * x).forEach(Print::println);
+    
+        /*
+        下面的示例中，我们给定一个列表，然后求列表中每个元素的平方和。
+        这个例子中，我们使用了 reduce() 方法，这个方法的主要作用是把 Stream 元素组合起来。
+         */
+        int sum = 0;
+        for (Integer n : list) {
+            int x = n * n;
+            sum = sum + x;
+        }
+        println(sum);
+        
+        // new way
+        sum = list.stream().map(x -> x * x).reduce((x, y) -> x + y).orElse(0);
+        println(sum);
+        sum = list.stream().map(x -> x * x).reduce(Integer::sum).orElse(0);
+        println(sum);
+        
+        /*
+        Lambda 表达式和匿名类之间的区别
+        this 关键字。
+            对于匿名类 this 关键字解析为匿名类，而对于 Lambda 表达式，this 关键字解析为包含写入 Lambda 的类。
+        编译方式。
+            Java 编译器编译 Lambda 表达式时，会将其转换为类的私有方法，再进行动态绑定。
+         */
     }
     
     void myMethodReference() {
