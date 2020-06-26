@@ -26,7 +26,7 @@ public class EmployeeTest {
         //强制类型转换
         Manager boss1 = (Manager) staff.get(0);
 
-        // print out information about all Employee objects
+        // println out information about all Employee objects
         for (Employee e : staff)
             System.out.println("name：" + e.getName() + ",salary：" + e.getSalary());
     }

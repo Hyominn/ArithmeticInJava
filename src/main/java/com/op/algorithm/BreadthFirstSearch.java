@@ -4,7 +4,7 @@ package com.op.algorithm;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * 广度优先搜索
@@ -48,7 +48,7 @@ public class BreadthFirstSearch {
         // int[][] grids = {{1, 1, 0, 1}, {1, 0, 1, 0}, {1, 1, 1, 1}, {1, 0, 1, 1}};
         // int[][] grids = {{0, 1}, {1, 0}};
         int[][] grids = {{0, 0, 0}, {1, 1, 0}, {1, 1, 0}};
-        print(breadthFirstSearch.shortestPathBinaryMatrix(grids));
+        println(breadthFirstSearch.shortestPathBinaryMatrix(grids));
         
     }
     

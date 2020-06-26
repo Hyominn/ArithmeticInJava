@@ -1,6 +1,6 @@
 package com.op.algorithm;
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * 种植花朵
@@ -17,9 +17,9 @@ public class PlaceFlowers {
         PlaceFlowers placeFlowers = new PlaceFlowers();
         int[] flowerbed = {1, 0, 0, 0, 0, 1};
         int n = 2;
-        print(placeFlowers.canPlaceFlowers(flowerbed, n));
+        println(placeFlowers.canPlaceFlowers(flowerbed, n));
     }
-
+    
     /**
      * flowerbed 数组中 1 表示已经种下了花朵。花朵之间至少需要一个单位的间隔，求解是否能种下 n 朵花。
      * <p>
@@ -32,7 +32,7 @@ public class PlaceFlowers {
         if (len == 0 || len < n) {
             return false;
         }
-
+        
         int f = 0;
         for (int i = 0; i < len; i++) {
             if (flowerbed[i] == 0
@@ -41,13 +41,13 @@ public class PlaceFlowers {
                 flowerbed[i] = 1;
                 f++;
             }
-
+            
             if (f >= n) {
                 return true;
             }
         }
-
+        
         return false;
     }
-
+    
 }
