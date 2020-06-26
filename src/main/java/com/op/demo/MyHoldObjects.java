@@ -133,7 +133,6 @@ public class MyHoldObjects {
     
 =======
 	public static void main(String[] args) {
-
 		MyHoldObjects myHoldObjects = new MyHoldObjects();
 		myHoldObjects.myCollectionDemo();
 		print();
@@ -148,6 +147,16 @@ public class MyHoldObjects {
 		myHoldObjects.myLinkedHashMapDemo();
 		print();
 		myHoldObjects.myHashMapDemo();
+	}
+
+	void myArray() {
+		// 数组复制
+		int size = 10000;
+		int[] src = new int[size];
+		int[] des = new int[size];
+		System.arraycopy(src, 0, des, 0, size);
+		// 数组扩容
+
 	}
 
 	void myCollectionDemo() {
@@ -265,6 +274,5 @@ public class MyHoldObjects {
 		}
 		print(m);
 	}
-
 
 }
