@@ -2,8 +2,10 @@ package com.op.demo;
 
 import com.op.util.Result;
 
+import static com.op.util.Print.println;
+
 // 静态导包
-import static com.op.util.Print.print;
+
 
 /**
  * @Author: NZY
@@ -22,7 +24,7 @@ public class MyKeyWords {
     
     static {
         // 静态语句块 静态语句块在类初始化时运行一次。
-        print("This is Static statement block");
+        println("This is Static statement block");
     }
     
     /**

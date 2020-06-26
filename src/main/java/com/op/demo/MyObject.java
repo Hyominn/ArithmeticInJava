@@ -2,7 +2,7 @@ package com.op.demo;
 
 import java.util.HashSet;
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * Object 通用方法
@@ -34,7 +34,8 @@ public class MyObject {
     public static void main(String[] args) {
         MyObject myObject = new MyObject();
         myObject.myHashCode();
-        print();
+        println();
+        myObject.myToString();
     }
     
     void myEquals() {
@@ -45,12 +46,12 @@ public class MyObject {
          Ⅰ 自反性
          true
          */
-        print(x.equals(x));
+        println(x.equals(x));
         /*
         Ⅱ 对称性
         true
          */
-        print(x.equals(y) == y.equals(x));
+        println(x.equals(y) == y.equals(x));
         /*
         Ⅲ 传递性
         true
@@ -62,12 +63,12 @@ public class MyObject {
         Ⅳ 一致性
         多次调用 equals() 方法结果不变
          */
-        print(x.equals(y) == x.equals(y));
+        println(x.equals(y) == x.equals(y));
         /*
         Ⅴ 与 null 的比较
         对任何不是 null 的对象 x 调用 x.equals(null) 结果都为 false
          */
-        print(x.equals(null));
+        println(x.equals(null));
         /*
         实现
         检查是否为同一个对象的引用，如果是直接返回 true；
@@ -78,7 +79,7 @@ public class MyObject {
         MyObject myObject = new MyObject();
         EqualExample equalExample1 = new EqualExample(1, 1, 1);
         EqualExample equalExample2 = new EqualExample(1, 1, 1);
-        print(equalExample1.equals(equalExample2));
+        println(equalExample1.equals(equalExample2));
         
     }
     
@@ -143,7 +144,7 @@ public class MyObject {
         set.add(e1);
         set.add(e2);
         // 未重写 hashCode() 方法之前返回 2 重写之后返回 1
-        print(set.size());
+        println(set.size());
         
         /*
         理想的哈希函数应当具有均匀性，即不相等的对象应当均匀分布到所有可能的哈希值上。
@@ -158,15 +159,26 @@ public class MyObject {
         // 默认返回 ToStringExample@4554617c 这种形式，其中 @ 后面的数值为散列码的无符号十六进制表示。
         ToStringExample example = new ToStringExample(123);
         System.out.println(example.toString());
+        example.number = 4;
+        println(example.toString());
         // ToStringExample@4554617c
     }
     
     static class ToStringExample {
-        
         private int number;
         
         public ToStringExample(int number) {
             this.number = number;
+        }
+        
+        /**
+         * 重写 toString() 返回 number
+         *
+         * @return String
+         */
+        @Override
+        public String toString() {
+            return String.valueOf(this.number);
         }
     }
     
