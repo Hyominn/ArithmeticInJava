@@ -29,17 +29,20 @@ public class MyHoldObjects {
 		myHoldObjects.myLinkedHashMapDemo();
 		println();
 		myHoldObjects.myHashMapDemo();
+		println();
+		myHoldObjects.myArrayDemo();
 	}
 
 	/**
-	 * 数组扩容 数组拷贝
+	 * 数组拷贝 数组扩容
 	 */
-	void myArray() {
-		// 数组复制
+	void myArrayDemo() {
+		// 数组拷贝
 		int size = 10000;
 		int[] src = new int[size];
 		int[] des = new int[size];
 		System.arraycopy(src, 0, des, 0, size);
+
 		// 数组扩容
 		int[] arr = new int[5];
 		arr[0] = 1;
@@ -47,7 +50,13 @@ public class MyHoldObjects {
 		arr[2] = 3;
 		arr[3] = 4;
 		arr[4] = 5;
-		println(arr);
+		println(Arrays.toString(arr));
+		println("arr length : " + arr.length);
+		// 使用 System.arraycopy()
+		int[] newArr = new int[10];
+		System.arraycopy(arr, 0, newArr, 0, arr.length);
+		println(Arrays.toString(newArr));
+		println("newArr length : " + newArr.length);
 
 	}
 
