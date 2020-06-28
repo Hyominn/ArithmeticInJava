@@ -100,7 +100,7 @@ public class MyLambda {
         for (Integer n : list) {
             println(n);
         }
-        // 使用 -> 的 Lambda 表达式
+        // 使用 -> 的 Lambda 表达式 只有一个参数可以省略参数的定义圆括号
         list.forEach(n -> println(n));
         // 使用 :: 的 Lambda 表达式
         list.forEach(Print::println);
