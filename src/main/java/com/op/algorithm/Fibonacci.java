@@ -3,7 +3,7 @@ package com.op.algorithm;
 import javax.validation.constraints.NotNull;
 
 
-import static com.op.util.Print.print;
+import static com.op.util.Print.println;
 
 /**
  * * 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
@@ -17,14 +17,16 @@ import static com.op.util.Print.print;
 public class Fibonacci {
 	public static void main(String[] args) {
 		Fibonacci fibonacci = new Fibonacci();
-		print(fibonacci.fib(45));
-		print();
-		print(fibonacci.fibByMemoizeUp(45));
+		println(fibonacci.fib(45));
+		println();
+		println(fibonacci.fibByMemoizeUp(45));
 
 
 	}
 
-	// recursion
+	/**
+	 * recursion
+	 */
 	public int fib(int N) {
 		// 时间复杂度：O(2^N) 这是计算斐波那契数最慢的方法。因为它需要指数的时间。
 		// T(n)=T(n-1)+T(n-2)=2*T(n-2)+T(n-3)=…=F(n-1)+F(n-2)=F(n) 那么为了求第n个数,就要调用F(n)次函数.
