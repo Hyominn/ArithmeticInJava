@@ -52,7 +52,7 @@ public class KthElement {
 		// 时间复杂度 O(NlogK)
 		// 空间复杂度 O(K)
 
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		PriorityQueue<Integer> pq = new PriorityQueue<>(k);
 		// 小顶堆
 
 		for (int val : nums) {
