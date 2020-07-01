@@ -3,11 +3,11 @@ package com.op.demo;
 
 import com.op.util.Stack2;
 
-import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import static com.op.util.Print.print;
 import static com.op.util.Print.println;
 
 /**
@@ -34,6 +34,8 @@ public class MyHoldObjects {
 		myHoldObjects.myHashMapDemo();
 		println();
 		myHoldObjects.myArrayDemo();
+		println();
+		myHoldObjects.myIteratorDemo();
 	}
 
 	/**
@@ -213,7 +215,7 @@ public class MyHoldObjects {
 		cache.put(1, "a");
 		cache.put(2, "b");
 		cache.put(3, "c");
-		cache.get(1);
+		println(cache.get(1));
 		cache.put(4, "d");
 		println(cache.keySet());
 		// [3, 1, 4]
@@ -306,7 +308,7 @@ public class MyHoldObjects {
 		WeakHashMap 的 Entry 继承自 WeakReference，被 WeakReference 关联的对象在下一次垃圾回收时会被回收。
 		WeakHashMap 主要用来实现缓存，通过使用 WeakHashMap 来引用缓存对象，由 JVM 对这部分缓存进行回收。
 		 */
-		Map<String,String> weakMap = new WeakHashMap<>(16);
+		Map<String, String> weakMap = new WeakHashMap<>(16);
 
 		/*
 		ConcurrentCache
@@ -317,7 +319,12 @@ public class MyHoldObjects {
 		当调用 get() 方法时，会先从 eden 区获取，如果没有找到的话再到 longterm 获取，当从 longterm 获取到就把对象放入 eden 中，从而保证经常被访问的节点不容易被回收。
 		当调用 put() 方法时，如果 eden 的大小超过了 size，那么就将 eden 中的所有对象都放入 longterm 中，利用虚拟机回收掉一部分不经常使用的对象。
 		 */
+	}
 
+	void myIteratorDemo() {
+		for (String s : new IterableClass()) {
+			print(s + " ");
+		}
 	}
 
 	/**
@@ -338,6 +345,33 @@ public class MyHoldObjects {
 
 		LRUCache() {
 			super(MAX_ENTRIES, 0.75f, true);
+		}
+	}
+
+	static class IterableClass implements Iterable<String> {
+		protected String[] words = ("You are a good girl, but my cock is too big to you.").split(" ");
+
+		@Override
+		public Iterator<String> iterator() {
+			return new Iterator<String>() {
+				private int index = 0;
+
+				@Override
+				public boolean hasNext() {
+					return index < words.length;
+				}
+
+				@Override
+				public String next() {
+					return words[index++];
+				}
+
+				@Override
+				public void remove() {
+					// Not implemented
+					throw new UnsupportedOperationException();
+				}
+			};
 		}
 	}
 }
