@@ -12,30 +12,32 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 public class Manager extends Employee {
-    //@Getter
-    //@Setter
-    private double bonus;
+	/**
+	 * 奖金
+	 */
+	private double bonus;
 
-    /**
-     * @param name   the employee's name
-     * @param salary the salary
-     * @param year   the hire year
-     * @param month  the hire month
-     * @param day    the hire day
-     */
-    public Manager(String name, double salary, int year, int month, int day) {
-        super(name, salary, year, month, day);
-        bonus = 0;
-    }
+	/**
+	 * @param name   the employee's name
+	 * @param salary the salary
+	 * @param year   the hire year
+	 * @param month  the hire month
+	 * @param day    the hire day
+	 */
+	public Manager(String name, double salary, int year, int month, int day) {
+		super(name, salary, year, month, day);
+		bonus = 0;
+	}
 
-    public double getSalary() {
-        double baseSalary = super.getSalary();
-        return baseSalary + bonus;
-    }
+	@Override
+	public double getSalary() {
+		double baseSalary = super.getSalary();
+		return baseSalary + bonus;
+	}
 
-    //在覆盖一个方法的时候，子类方法不能低于超类方法的可见性
-    @Override
-    public String getDescription() {
-        return super.getDescription();
-    }
+	@Override
+	public String getDescription() {
+		//在覆盖一个方法的时候，子类方法不能低于超类方法的可见性
+		return super.getDescription();
+	}
 }

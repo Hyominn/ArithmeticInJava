@@ -4,6 +4,7 @@ package com.op.algorithm;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.PriorityQueue;
 
 /**
@@ -51,7 +52,7 @@ public class KthElement {
 		// 时间复杂度 O(NlogK)
 		// 空间复杂度 O(K)
 
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		PriorityQueue<Integer> pq = new PriorityQueue<>(k);
 		// 小顶堆
 
 		for (int val : nums) {
@@ -61,6 +62,7 @@ public class KthElement {
 				pq.poll();
 			}
 		}
+
 		return pq.peek();
 	}
 
@@ -68,12 +70,8 @@ public class KthElement {
 	 * 相对应的 可以用大顶堆来求数组中第k个最小元素
 	 */
 	public int findKthSmallestByPriorityQueue(@NotNull int[] nums, @NotNull int k) {
-		PriorityQueue<Integer> pq = new PriorityQueue<>(k, new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				return o2 - o1;
-			}
-		}); // 大顶堆
+		// 大顶堆
+		PriorityQueue<Integer> pq = new PriorityQueue<>(k, (o1, o2) -> o2 - o1);
 
 		for (int val : nums) {
 			pq.add(val);
