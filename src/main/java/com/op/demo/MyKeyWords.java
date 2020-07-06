@@ -12,63 +12,63 @@ import static com.op.util.Print.println;
  * @Date: 2020/6/18 16:27
  */
 public class MyKeyWords {
-    /**
-     * 实例变量
-     */
-    private int x;
-    /**
-     * 静态变量
-     */
-    private static int y;
-    
-    
-    static {
-        // 静态语句块 静态语句块在类初始化时运行一次。
-        println("This is Static statement block");
-    }
-    
-    /**
-     * 内部类
-     */
-    class InnerClass {
-    }
-    
-    /**
-     * 静态内部类
-     */
-    static class StaticInnerClass {
-        // 静态内部类不能访问外部类的非静态的变量和方法。
-        
-    }
-    
-    public static void main(String[] args) {
-        MyKeyWords myKeyWords = new MyKeyWords();
+	/**
+	 * 实例变量
+	 */
+	private int x;
+	/**
+	 * 静态变量
+	 */
+	private static int y;
+
+
+	static {
+		// 静态语句块 静态语句块在类初始化时运行一次。
+		println("This is Static statement block");
+	}
+
+	/**
+	 * 内部类
+	 */
+	class InnerClass {
+	}
+
+	/**
+	 * 静态内部类
+	 */
+	static class StaticInnerClass {
+		// 静态内部类不能访问外部类的非静态的变量和方法。
+
+	}
+
+	public static void main(String[] args) {
+		MyKeyWords myKeyWords = new MyKeyWords();
     
         /*
         InnerClass innerClass = new InnerClass();
         'OuterClass.this' cannot be referenced from a static context
          */
-        InnerClass innerClass = myKeyWords.new InnerClass();
-        StaticInnerClass staticInnerClass = new StaticInnerClass();
-        
-        // int x = A.x;  // Non-static field 'x' cannot be referenced from a static context
-        int x = myKeyWords.x;
-        // int y = myKeyWords.y;
-    }
-    
-    void myFinal() {
+		InnerClass innerClass = myKeyWords.new InnerClass();
+		StaticInnerClass staticInnerClass = new StaticInnerClass();
+
+		// int x = A.x;  // Non-static field 'x' cannot be referenced from a static context
+		int x = myKeyWords.x;
+		// int y = myKeyWords.y;
+	}
+
+	void myFinal() {
         /*
         修饰数据
         声明数据为常量，可以是编译时常量，也可以是在运行时被初始化后不能被改变的常量。
         对于基本类型，final 使数值不变；
         对于引用类型，final 使引用不变，也就不能引用其它对象，但是被引用的对象本身是可以修改的。
          */
-        
-        final int x = 1;
-        // x = 2;  // cannot assign value to final variable 'x'
-        final Result r = new Result(1, "a");
-        // you can change r.code value
-        r.code = 0;
+
+		final int x = 1;
+		// x = 2;  // cannot assign value to final variable 'x'
+		final Result r = new Result(1, "a");
+		// you can change r.code value
+		r.code = 0;
         
         /*
         修饰方法
@@ -79,9 +79,9 @@ public class MyKeyWords {
         修饰类
         声明类不允许被继承。
          */
-    }
-    
-    static void myStatic() {
+	}
+
+	static void myStatic() {
         /*
         静态变量
         静态变量：又称为类变量，也就是说这个变量属于类的，类所有的实例都共享静态变量，
@@ -94,7 +94,7 @@ public class MyKeyWords {
         静态方法在类加载的时候就存在了，它不依赖于任何实例。所以静态方法必须有实现，也就是说它不能是抽象方法。
         只能访问所属类的静态字段和静态方法，方法中不能有 this 和 super 关键字，因此这两个关键字与具体对象关联。
          */
-        int a = y;
+		int a = y;
         /*
         int b = x;  Non-static field 'x' cannot be referenced from a static context
         int b = this.y; 'com.op.demo.MyKeyWords.this' cannot be referenced from a static context
@@ -126,7 +126,9 @@ public class MyKeyWords {
             子类（实例变量、普通语句块）
             子类（构造函数）
          */
-    }
-    
+	}
+
+
+
 }
 
