@@ -1,5 +1,8 @@
 package com.op.demo;
 
+import java.util.Arrays;
+
+import static com.op.util.Print.println;
 import static java.lang.Math.pow;
 
 /**
@@ -29,9 +32,49 @@ public class Demo {
 
 		String s1 = "Ok";
 		StringBuilder sb1 = new StringBuilder(s1);
-		System.out.println(s1.hashCode() + " " + sb1.hashCode());//2556 1051754451
+		System.out.println(s1.hashCode() + " " + sb1.hashCode());
+		// 2556 1051754451
 		String s2 = new String("Ok");
 		StringBuilder sb2 = new StringBuilder(s2);
-		System.out.println(s2.hashCode() + " " + sb2.hashCode());//2556 1732398722
+		System.out.println(s2.hashCode() + " " + sb2.hashCode());
+		// 2556 1732398722
+
+		Demo demo = new Demo();
+		Comparable[] a1111 = new Comparable[]{15, 0, 6, 9, 3};
+		demo.sort(a1111);
+		println(Arrays.toString(a1111));
+
+		int j = 10, h = 2;
+		j -= h;
+		println(j);
+		println(h);
+	}
+
+
+	public void sort(Comparable[] a) {
+		int N = a.length;
+		int h = 1;
+		while (h < N / 3) {
+			h = 3 * h + 1;
+			// 1, 4, 13, 40, ...
+		}
+		while (h >= 1) {
+			for (int i = h; i < N; i++) {
+				for (int j = i; j >= h && compareElement(a[j], a[j - h]); j -= h) {
+					exch(a, j, j - h);
+				}
+			}
+			h = h / 3;
+		}
+	}
+
+	public boolean compareElement(Comparable v, Comparable w) {
+		return v.compareTo(w) < 0;
+	}
+
+	public static void exch(Comparable[] a, int i, int j) {
+		Comparable t = a[i];
+		a[i] = a[j];
+		a[j] = t;
 	}
 }
