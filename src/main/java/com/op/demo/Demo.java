@@ -44,22 +44,18 @@ public class Demo {
 		demo.sort(a1111);
 		println(Arrays.toString(a1111));
 
-		int j = 10, h = 2;
-		j -= h;
-		println(j);
-		println(h);
 	}
 
 
 	public void sort(Comparable[] a) {
-		int N = a.length;
+		int n = a.length;
 		int h = 1;
-		while (h < N / 3) {
+		while (h < n / 3) {
 			h = 3 * h + 1;
 			// 1, 4, 13, 40, ...
 		}
 		while (h >= 1) {
-			for (int i = h; i < N; i++) {
+			for (int i = h; i < n; i++) {
 				for (int j = i; j >= h && compareElement(a[j], a[j - h]); j -= h) {
 					exch(a, j, j - h);
 				}
