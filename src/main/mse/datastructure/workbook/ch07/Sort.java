@@ -1,7 +1,5 @@
 package workbook.ch07;
 
-import workbook.ch07.Random;
-
 /**
  * @Author: NZY
  * @Date: 2020-05-31 13:03:05

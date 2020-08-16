@@ -15,7 +15,7 @@ buildscript {
     }
 }
 
-def appMainClass = 'com.op.demo.Welcome'
+def appMainClass = 'com.op.foundation.demo.Welcome'
 // idea 插件，用来生成 idea 工程目录
 apply plugin: 'idea'
 // java 插件,提供 build、jar 等task
