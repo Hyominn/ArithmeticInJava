@@ -12,11 +12,10 @@
 // void permute( Object [ ] a )         --> Randomly permutate
 package workbook.ch07;
 
-import workbook.ch07.Sort;
 /**
  * Random number class, using a 31-bit
  * linear congruential generator.
- * Note that java.util contains a class Random,
+ * Note that java.foundation.util contains a class Random,
  * so watch out for name conflicts.
  * @Author: NZY
  * @Date: 2020-05-31 13:03:05
